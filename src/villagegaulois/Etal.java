@@ -2,7 +2,7 @@ package villagegaulois;
 
 import personnages.Gaulois;
 
-public class Etal {
+public class Etal { 
 	private Gaulois vendeur;
 	private String produit;
 	private int quantiteDebutMarche;
@@ -52,10 +52,13 @@ public class Etal {
 		return "L'étal est libre\n";
 	}
 
-	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
+	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) throws IllegalArgumentException {
 		//if (etalOccupe) {
 		StringBuilder chaine = new StringBuilder();
-		
+		if (quantiteAcheter < 1) {
+			throw new IllegalArgumentException("La quantit� ("
+					+ quantiteAcheter +") n'est pas strictement positive");
+		}
 		try {
 			chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
 					+ " " + produit + " à " + vendeur.getNom());

@@ -8,7 +8,11 @@ public class ScenarioCasDegradé {
 //		etal.libererEtal();
 //		System.out.println("Fin du test libererEtal");
 		
-		etal.acheterProduit(8, null);
+		try {
+			etal.acheterProduit(-1, null);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Fin du test acheterProduit");
 	}
 }
