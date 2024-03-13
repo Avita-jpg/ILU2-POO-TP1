@@ -53,8 +53,12 @@ public class Etal {
 	}
 
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) throws IllegalArgumentException {
-		//if (etalOccupe) {
+		
 		StringBuilder chaine = new StringBuilder();
+		if (!etalOccupe) {
+			throw new IllegalStateException("L'étal n'est pas occupé");
+		}
+		
 		if (quantiteAcheter < 1) {
 			throw new IllegalArgumentException("La quantité ("
 					+ quantiteAcheter +") n'est pas strictement positive");
@@ -84,7 +88,6 @@ public class Etal {
 			e.printStackTrace();
 		}
 		return chaine.toString();
-		//return null;
 	}
 
 	public boolean contientProduit(String produit) {
