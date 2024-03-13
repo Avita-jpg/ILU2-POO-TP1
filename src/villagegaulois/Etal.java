@@ -53,8 +53,10 @@ public class Etal {
 	}
 
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
-		if (etalOccupe) {
-			StringBuilder chaine = new StringBuilder();
+		//if (etalOccupe) {
+		StringBuilder chaine = new StringBuilder();
+		
+		try {
 			chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
 					+ " " + produit + " à " + vendeur.getNom());
 			if (quantite == 0) {
@@ -74,9 +76,12 @@ public class Etal {
 						+ ", est ravi de tout trouver sur l'étal de "
 						+ vendeur.getNom() + "\n");
 			}
-			return chaine.toString();
+			
+		} catch ( NullPointerException e) {
+			e.printStackTrace();
 		}
-		return null;
+		return chaine.toString();
+		//return null;
 	}
 
 	public boolean contientProduit(String produit) {
