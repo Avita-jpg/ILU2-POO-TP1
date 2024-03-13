@@ -44,9 +44,12 @@ public class Village {
 		return null;
 	}
 
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
 		StringBuilder chaine = new StringBuilder();
-		if (nbVillageois < 1) {
+		if (this.chef == null) {
+			throw new VillageSansChefException(this.nom + " n'a pas un chef.");
+		}
+		else if (nbVillageois < 1) {
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
 					+ chef.getNom() + ".\n");
 		} else {
@@ -57,7 +60,7 @@ public class Village {
 			}
 		}
 		return chaine.toString();
-	}
+}
 	
 	private static class Marche {
 		private Etal[] etals;

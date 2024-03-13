@@ -15,5 +15,7 @@ public class ScenarioCasDegradé {
 			e.printStackTrace();
 		}
 		System.out.println("Fin du test acheterProduit");
+		
+		
 	}
 }
